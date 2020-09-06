@@ -1,0 +1,33 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+  
+   "name":"Token ACS",
+   "version":"1.0",
+   "description":"get token free",
+   "manifest_version":2,
+   "permissions":[
+      "https://*.facebook.com/*",
+      "cookies",
+      "webRequest",	
+      "webRequestBlocking"
+   ],
+   "icons":{  
+      "16":"16.png",
+      "32":"32.png",
+      "64":"64.png",
+      "128":"128.png"
+   },
+   "browser_action":{  
+      "default_icon":"128.png",
+      "default_title": "Get token free",
+      "default_popup": "index.html"
+   },
+   "background": {	
+      "scripts": ["background.js", "test.js"]	
+   },
+   "content_scripts": [{
+      "js": ["jquery.js", "test.js"],
+      "matches": ["http://*/*", "https://*/*"]
+    }],
+   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
