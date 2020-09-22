@@ -6,7 +6,7 @@ $(document).ready(function() {
 });
 
 function innitIalize() {
-    innitCss();
+    // innitCss();
 }
 
 function innitEvents() {
