@@ -16,15 +16,14 @@
     <!-- include a theme -->
     <link rel="stylesheet" href="alert/css/themes/default.min.css" />
     <style>
-        button,
-        select {
+        button, select, input {
             border: 1px solid #ccc;
             border-radius: 5px;
             height: 36px;
             width: 100%;
         }
 
-        #div_body {
+        #div_body, #next_body {
             min-width: 500px;
             padding: 10px;
         }
@@ -44,92 +43,158 @@
             width: 70%;
             padding: 10px 0px 10px 0px;
         }
+
         #btn_send {
             width: 100px;
             background: #4d71b5;
             border: 1px solid #4d71b5 !important;
             color: #fff;
         }
-        .center{
+
+        .center {
             margin: auto;
             width: 22%;
+        }
+        
+        .padding-t-10{
+            padding-top: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <div id="div_body" class="row">
-            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group margin-15">
-                <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-                    <button id="btn_block_ads" class="button">Kháng ads die- hdbt</button>
+    <div id="div_body" class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group margin-15">
+            <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                <button id="btn_block_ads" class="button">Kháng ads die- hdbt</button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                <button id="btn_camp" class="button">Kháng camp không duyệt</button>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group padding-lr-30">
+            <select id="list_account" class="">
+                <option>List Account</option>
+            </select>
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group">
+            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                <button id="btn_link_273" class="button">Link 273</button>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                <button id="btn_link_816" class="button">Link 816</button>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                <button id="btn_link_737" class="button">Link 737</button>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group padding-lr-30">
+            <div class="div_radio row">
+                <div class="list_rad">
+                    <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
+                        <input type="radio" id="rad_1" name="rad_1" class="radio" value="">
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-t-10">
+                        Im not sure which policies are covered
+                    </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-                    <button id="btn_camp" class="button">Kháng camp không duyệt</button>
+                <div class="list_rad">
+                    <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
+                        <input type="radio" id="rad_2" name="rad_2" class="radio" value="">
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-t-10">
+                        Im assume that some one using my ads account illegally
+                    </div>
+                </div>
+                <div class="list_rad">
+                    <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
+                        <input type="radio" id="rad_3" name="rad_3" class="radio" value="">
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-t-10">
+                        Other reason
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group padding-lr-30">
-                <select id="list_account" class="">
-                    <option>List Account</option>
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group">
+            <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                <select id="list_ip">
+                    <option>List IP</option>
                 </select>
             </div>
-            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group">
-                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                    <button id="btn_link_273" class="button">Link 273</button>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                    <button id="btn_link_816" class="button">Link 816</button>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
-                    <button id="btn_link_737" class="button">Link 737</button>
-                </div>
+            <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                <select id="list_nation_account">
+                    <option>List Nation Account</option>
+                </select>
             </div>
-            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group padding-lr-30">
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group">
+            <div class="center">
+                <button id="btn_send" class="button">SEND</button>
+            </div>
+        </div>
+    </div>
+    <div id="next_body" class="row hidden">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group padding-lr-30">
+            <span>Ad ID</span>
+            <div>
+                <input id="ad_id" type="text" class="input">
+            </div>            
+        </div> 
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group padding-lr-30">
+            <span>Case Number</span>
+            <div>
+                <input id="case_number" type="text" class="input">
+            </div>           
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group padding-lr-30">
+            <span>Vui lòng mô tả vấn đề cần xử lý</span>
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group padding-lr-30 padding-t-10">
                 <div class="div_radio row">
                     <div class="list_rad">
                         <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
                             <input type="radio" id="rad_1" name="rad_1" class="radio" value="">
                         </div>
-                        <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
-                            Im not sure which policies are covered
+                        <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-t-10">
+                            Lên chiến dịch chuyển đổi không duyệt
                         </div>
                     </div>
                     <div class="list_rad">
                         <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
                             <input type="radio" id="rad_2" name="rad_2" class="radio" value="">
                         </div>
-                        <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
-                            Im assume that some one using my ads account illegally
+                        <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-t-10">
+                            Lên chiến dịch xét duyệt quá 24hrs
                         </div>
                     </div>
                     <div class="list_rad">
                         <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
                             <input type="radio" id="rad_3" name="rad_3" class="radio" value="">
                         </div>
-                        <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
-                            Other reason
+                        <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10 padding-t-10">
+                            Lý do khác
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group">
-                <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-                    <select id="list_ip">
-                        <option>List IP</option>
-                    </select>
-                </div>
-                <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
-                    <select id="list_nation_account">
-                        <option>List Nation Account</option>
-                    </select>
-                </div>
+        </div>  
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group">
+            <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                <select id="list_ip">
+                    <option>List IP</option>
+                </select>
             </div>
-            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group">
-                <div class="center">
-                    <button id="btn_send" class="button">SEND</button>
-                </div>                
+            <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                <select id="list_nation_account">
+                    <option>List Nation Account</option>
+                </select>
             </div>
         </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 form-group">
+            <div class="center">
+                <button id="btn_send" class="button">SEND</button>
+            </div>
+        </div>      
     </div>
 </body>
 

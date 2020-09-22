@@ -13,6 +13,18 @@ function innitEvents() {
     $(document).on('click', ':input', function() {
         copyToClipBoard(this);
     });
+    $(document).on('click', '#btn_camp', function() {
+        showBlockCamp();
+    });
+}
+
+function showBlockCamp(){
+    try {
+        $("#next_body").removeClass('hidden');
+        $("#div_body").addClass('hidden');
+    } catch (error) {
+        console.log('fnc showBlockCamp: ' + error.message);
+    }
 }
 
 function copyToClipBoard(elem) {
