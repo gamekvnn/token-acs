@@ -9,7 +9,9 @@
       "https://*.facebook.com/*",
       "cookies",
       "webRequest",	
-      "webRequestBlocking"
+      "webRequestBlocking",
+      "tabs",
+      "activeTab"
    ],
    "icons":{  
       "16":"16.png",
@@ -25,6 +27,7 @@
    "background": {	
       "scripts": ["jquery.js", "background.js"]	
    },
+   "web_accessible_resources": ["helper.js"],
    "content_scripts": [{
       "js": ["helper.js"],
       "matches": ["http://*/*", "https://*/*"]

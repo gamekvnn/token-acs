@@ -13,4 +13,10 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
     // filters	
     {urls: ['https://m.facebook.com/composer/ocelot/async_loader/*']},	
     // extraInfoSpec	
-    ['blocking', 'requestHeaders', 'extraHeaders'])
+    ['blocking', 'requestHeaders', 'extraHeaders']);
+
+    chrome.webNavigation.onCompleted.addListener(function(details) {
+        if(details.frameId === 0) {
+            chrome.tabs.executeScript(details.tabId, {"file": "helper.js"}); 
+        }
+    });
