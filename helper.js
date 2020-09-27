@@ -24,8 +24,36 @@ function innitEvents() {
         });
         document.getElementById("btn_send_1").addEventListener("click", clickBtnSend);
         document.getElementById("btn_send_2").addEventListener("click", clickBtnSend2);
+
+        var list_ip = document.querySelectorAll('list_ip');
+        var list_nation_account = document.querySelectorAll('list_nation_account');
+        Array.prototype.forEach.call(list_ip, function (ip) {
+            ip.addEventListener("change", onChangeAccount(1));
+        });
+        Array.prototype.forEach.call(list_nation_account, function (account) {
+            account.addEventListener("change", onChangeAccount(2));
+        });
+        document.getElementById("list_ip").addEventListener("change", onChangeIP);
+        document.getElementById("list_nation_account").addEventListener("change", onChangeAccount);
+        document.getElementById("list_ip_1").addEventListener("change", onChangeIP);
+        document.getElementById("list_nation_account_1").addEventListener("change", onChangeAccount);
     } catch (error) {
         console.log('fnc innitEvents: ' + error.message);
+    }
+}
+
+function onChangeAccount() {
+    try {
+        alert('Change Account successfull!');
+    } catch (error) {
+        console.log('fnc onChangeAccount: ' + error.message);
+    }
+}
+function onChangeIP() {
+    try {
+        alert('Change IP successfull!');
+    } catch (error) {
+        console.log('fnc onChangeIP: ' + error.message);
     }
 }
 
@@ -131,8 +159,9 @@ function moveToFacebookContact() {
                     + ""
                     + "document.getElementById('742613859158435').value = '" + ad_account + "';"
                     + radio_script
+                    + "document.getElementById('511018472633112').value = '1234567891';"
+                    + "document.getElementById('u_0_c').click();"
                 }, () => chrome.runtime.lastError);
-
         });        
 
     } catch (error) {
@@ -174,6 +203,7 @@ function moveToFacebookContact2() {
                     code : "document.getElementById('486556404885036').value ='" + ad_account + "';"
                     +  "document.getElementById('337290956413644').value ='" + case_number + "';"
                     + radio_script
+                    + "document.getElementById('u_0_5').click();"
                 }, () => chrome.runtime.lastError);
 
         });        
@@ -265,7 +295,13 @@ function getUID(param_data) {
             dataType: 'json',
             success: function (data, status) {
                 for (var account in data['adaccounts']['data']) {
-                    var option = '<option value="' + data['adaccounts']['data'][account]['id'] + '">' + data['adaccounts']['data'][account]['id'] + '</option>';
+                    let temp_id = data['adaccounts']['data'][account]['id'];
+                    let option  = '';
+                    if(temp_id != '' && temp_id.split('_')[0] == 'act' && temp_id.split('_')[1] != ''){
+                        option = '<option value="' + temp_id.split('_')[1] + '">' + temp_id.split('_')[1] + '</option>';
+                    }else{
+                        option = '<option value="' + data['adaccounts']['data'][account]['id'] + '">' + data['adaccounts']['data'][account]['id'] + '</option>';
+                    }
                     list_account.append(option);
                     list_account_1.append(option);
                 }
