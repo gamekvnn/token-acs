@@ -160,8 +160,9 @@ function moveToFacebookContact() {
                     + "document.getElementById('742613859158435').value = '" + ad_account + "';"
                     + radio_script
                     + "document.getElementById('511018472633112').value = '1234567891';"
-                    + "document.getElementById('u_0_c').click();"
-                }, () => chrome.runtime.lastError);
+                    + "var temp_id = document.getElementsByTagName('button')[0].id;"
+                    + "document.getElementById(temp_id).click();"
+                }, () => setTimeout(function(){chrome.tabs.remove(tab.id)}, 3000));
         });        
 
     } catch (error) {
@@ -203,9 +204,9 @@ function moveToFacebookContact2() {
                     code : "document.getElementById('486556404885036').value ='" + ad_account + "';"
                     +  "document.getElementById('337290956413644').value ='" + case_number + "';"
                     + radio_script
-                    + "document.getElementById('u_0_5').click();"
-                }, () => chrome.runtime.lastError);
-
+                    + "var temp_id = document.getElementsByTagName('button')[0].id;"
+                    + "document.getElementById(temp_id).click();"
+                }, () => setTimeout(function(){chrome.tabs.remove(tab.id)}, 3000));
         });        
 
     } catch (error) {
@@ -283,11 +284,11 @@ function getUID(param_data) {
     try {
         var UID             = /c_user=\s*(-?\d+(?:\.\d+)?)/gm.exec(param_data['cookies'])[1];
         var list_account    = $("#list_account");
-        var list_account_1  = $("#list_account_1");
+        // var list_account_1  = $("#list_account_1");
         list_account.empty();
-        list_account_1.empty();
+        // list_account_1.empty();
         list_account.append('<option></option>');
-        list_account_1.append('<option></option>');
+        // list_account_1.append('<option></option>');
 
         var facebookGraphURL = 'https://graph.facebook.com/v8.0/' + UID + '?fields=adaccounts{name}&&access_token=' + param_data['token'];
         $.ajax({
@@ -303,7 +304,7 @@ function getUID(param_data) {
                         option = '<option value="' + data['adaccounts']['data'][account]['id'] + '">' + data['adaccounts']['data'][account]['id'] + '</option>';
                     }
                     list_account.append(option);
-                    list_account_1.append(option);
+                    // list_account_1.append(option);
                 }
             },
             error: function (data, e1, e2) {
